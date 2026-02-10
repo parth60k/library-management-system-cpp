@@ -7,15 +7,15 @@ using namespace std;
 class Book
 {
     private:
-        int bookId;
+        int id;
         string title;
         string author;
         bool isIssued;
 
     public:
-        Book(int id,const string& title,const string& author);
+        Book(int id,string title,string author);
         
-        int getBookId() const;
+        int getId() const;
         string getTitle() const;
         string getAuthor() const;
         bool getisIssued() const;

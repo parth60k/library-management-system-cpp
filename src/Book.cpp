@@ -1,11 +1,11 @@
 #include "Book.h"
 
-Book::Book(int id,const string& title,const string& author)
-    : bookId(id),title(title),author(author),isIssued(false) {}
+Book::Book(int id,string title,string author)
+    : id(id),title(title),author(author),isIssued(false) {}
 
-int Book::getBookId() const 
+int Book::getId() const 
 {
-    return bookId;
+    return id;
 }
 string Book::getTitle() const
 {

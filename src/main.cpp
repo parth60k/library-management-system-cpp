@@ -28,7 +28,7 @@ int main()
 
 
         case 1:
-            cout<<"Add Book selected"<<endl;
+            library.addBook();
             break;
         case 2:
             cout<<"Add User selected"<<endl;
@@ -40,7 +40,7 @@ int main()
             cout<<"Return Book selected"<<endl;
             break;
         case 5:
-            cout<<"Display Book selected"<<endl;
+            library.displayBooks();
             break;
         case 0:
             cout<<"Exiting Program..."<<endl;
