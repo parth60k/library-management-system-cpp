@@ -7,13 +7,13 @@ using namespace std;
 class User
 {
     private:
-        int userId;
+        int id;
         string name;
 
     public:
         User(int id,const string& name);
 
-        int getUserId() const;
+        int getId() const;
         string getName() const;
 };
 

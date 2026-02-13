@@ -45,3 +45,37 @@ void Library::displayBooks() const
             << endl;
     }
 }
+
+void Library::addUser()
+{
+    int id;
+    string name;
+
+    cout<<"Enter user ID: ";
+    cin>>id;
+    cin.ignore();
+
+    cout<<"Enter user name: ";
+    getline(cin,name);
+
+    User newUser(id, name);
+    users.push_back(newUser);
+
+    cout<<"USer added succcessfully!"<<endl;
+
+}
+
+void Library::displayUsers() const
+{
+    if(users.empty())
+    {
+        cout<<"No users available"<<endl;
+        return;
+    }
+    cout<<"\n----  User List  ----"<<endl;
+    for(const User& user : users)
+    {
+        cout<<"ID: "<<user.getId()
+            <<", Name: "<<user.getName()<<endl;
+    }
+}

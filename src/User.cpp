@@ -1,11 +1,11 @@
 #include "User.h"
 
 User::User(int id,const string& name)
-    : userId(id),name(name) {}
+    : id(id),name(name) {}
 
-int User::getUserId() const
+int User::getId() const
 {
-    return userId;
+    return id;
 }
 string User::getName() const
 {

@@ -10,6 +10,7 @@ void showMenu()
     cout<<"3. Issue Book"<<endl;
     cout<<"4. Return Book"<<endl;
     cout<<"5. Display Books "<<endl;
+    cout<<"6. Display Book Users "<<endl;
     cout<<"0. Exit "<<endl;
     cout<<" Enter choice"<<endl;
 }
@@ -22,6 +23,12 @@ int main()
     do{
         showMenu();
         cin>>choice;
+        if (cin.fail()) {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Invalid input. Enter a number.\n";
+        continue;
+}
 
         switch(choice)
     {
@@ -31,7 +38,7 @@ int main()
             library.addBook();
             break;
         case 2:
-            cout<<"Add User selected"<<endl;
+            library.addUser();
             break;
         case 3:
             cout<<"Issue Book selected"<<endl;
@@ -42,9 +49,14 @@ int main()
         case 5:
             library.displayBooks();
             break;
+        case 6:
+            library.displayUsers();
+            break;
         case 0:
             cout<<"Exiting Program..."<<endl;
-            break;    
+            break; 
+        default:
+            cout << "Invalid choice. Try again."<<endl;   
     }
 
       }while(choice!=0);
