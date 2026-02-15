@@ -1,7 +1,8 @@
 #include "Book.h"
 
 Book::Book(int id,string title,string author)
-    : id(id),title(title),author(author),isIssued(false) {}
+    : id(id),title(title),author(author),
+    isIssued(false),issuedToUserId(-1) {}
 
 int Book::getId() const 
 {
@@ -22,4 +23,12 @@ bool Book::getisIssued() const
 void Book::setIssued(bool status)
 {
     isIssued=status;
+}
+int Book::getIssuedToUserId() const
+{
+    return issuedToUserId;
+}
+void Book::setIssuedToUser(int userId)
+{
+    issuedToUserId = userId;
 }

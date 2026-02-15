@@ -79,3 +79,84 @@ void Library::displayUsers() const
             <<", Name: "<<user.getName()<<endl;
     }
 }
+
+Book* Library::findBookById(int id)
+{
+    for(auto &book : books)
+    {
+        if(book.getId() == id)
+        return &book;
+    }
+    return nullptr;
+}
+
+User* Library::findUserById(int id)
+{
+    for(auto &user : users)
+    {
+        if(user.getId() == id)
+        return &user;
+    }
+    return nullptr;
+}
+
+void Library::issueBook()
+{
+    int bookId,userId;
+
+    cout<<"Enter Book ID: ";
+    cin>>bookId;
+
+    Book* book= findBookById(bookId);
+    if(!book)
+    {
+        cout<<"Book not found"<<endl;
+        return;
+    }
+    if(book->getisIssued())
+    {
+        cout<<"Book already issued"<<endl;
+        return;
+    }
+
+    cout<<"Enter User ID: ";
+    cin>>userId;
+
+    User* user= findUserById(userId);
+    if(!user)
+    {
+        cout<<"User not found"<<endl;
+        return;
+    }
+    
+    book->setIssued(true);
+    book->setIssuedToUser(userId);
+
+    cout<<"Book issued successfully to "<<user->getName()<<"!"<<endl;
+}
+
+void Library::returnBook()
+{
+    int bookId;
+
+    cout<<"Enter Book ID to return: ";
+    cin>>bookId;
+
+    Book* book =findBookById(bookId);
+    if(!book)
+    {
+        cout<<"Book not found"<<endl;
+        return;
+    }
+
+    if(!book->getisIssued())
+    {
+        cout<<"Book is not issued"<<endl;
+        return;
+    }
+
+    book->setIssued(false);
+    book->setIssuedToUser(-1);
+
+    cout<<"Book returned successfully!"<<endl;
+}

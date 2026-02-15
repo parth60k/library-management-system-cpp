@@ -11,6 +11,7 @@ class Book
         string title;
         string author;
         bool isIssued;
+        int issuedToUserId;
 
     public:
         Book(int id,string title,string author);
@@ -20,6 +21,9 @@ class Book
         string getAuthor() const;
         bool getisIssued() const;
         void setIssued(bool status);
+
+        int getIssuedToUserId() const;
+        void setIssuedToUser(int userId);
 
 };
 

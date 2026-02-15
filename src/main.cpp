@@ -41,10 +41,10 @@ int main()
             library.addUser();
             break;
         case 3:
-            cout<<"Issue Book selected"<<endl;
+            library.issueBook();
             break;
         case 4:
-            cout<<"Return Book selected"<<endl;
+            library.returnBook();
             break;
         case 5:
             library.displayBooks();

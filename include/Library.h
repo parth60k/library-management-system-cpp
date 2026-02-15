@@ -22,5 +22,11 @@ class Library
         void addUser();
         void displayUsers() const;
 
+        Book* findBookById(int id);
+        User* findUserById(int id);
+
+        void issueBook();
+        void returnBook();
+
 };
 #endif
