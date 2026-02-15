@@ -28,5 +28,11 @@ class Library
         void issueBook();
         void returnBook();
 
+        void saveBooksToFile() const;
+        void loadBooksFromFile();
+
+        void saveUsersToFile() const;
+        void loadUsersFromFile();
+
 };
 #endif

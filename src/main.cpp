@@ -1,6 +1,6 @@
 #include<iostream>
 #include "Library.h"
-  using namespace std;
+using namespace std;
    
 void showMenu()
 {
@@ -23,15 +23,16 @@ int main()
     do{
         showMenu();
         cin>>choice;
-        if (cin.fail()) {
-        cin.clear();
-        cin.ignore(1000, '\n');
-        cout << "Invalid input. Enter a number.\n";
-        continue;
-}
+        if (cin.fail()) 
+        {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "Invalid input. Enter a number.\n";
+            continue;
+        }
 
         switch(choice)
-    {
+        {
 
 
         case 1:
@@ -53,6 +54,8 @@ int main()
             library.displayUsers();
             break;
         case 0:
+            library.saveBooksToFile();
+            library.saveUsersToFile();
             cout<<"Exiting Program..."<<endl;
             break; 
         default:

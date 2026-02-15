@@ -1,12 +1,16 @@
 #include <iostream>
+#include<fstream>
+#include<sstream>
 #include "Library.h"
 
 using namespace std;
 
 Library::Library()
 {
-    
+    loadBooksFromFile();
+    loadUsersFromFile();
 }
+
 void Library::addBook()
 {
     int id;
@@ -159,4 +163,112 @@ void Library::returnBook()
     book->setIssuedToUser(-1);
 
     cout<<"Book returned successfully!"<<endl;
+}
+
+
+void Library::saveBooksToFile() const
+{
+    ofstream file("books.csv");
+
+    for(const Book &book : books)
+    {
+        file<< book.getId() <<","
+            << book.getTitle() <<","
+            << book.getAuthor() <<","
+            << book.getisIssued() <<","
+            << book.getIssuedToUserId() << endl;
+    }
+    
+    cout << "Saving books...\n";
+
+    file.close();
+}
+
+void Library::loadBooksFromFile()
+{
+    ifstream file("books.csv");
+    
+    if(!file.is_open())
+        return;
+
+    string line;
+
+    while(getline(file,line))
+    {
+        stringstream ss(line);
+        string token;
+
+        int id;
+        string title,author;
+        bool isIssued;
+        int issuedTo;
+
+        getline(ss,token,',');
+        id=stoi(token);
+
+        getline(ss,title,',');
+        getline(ss,author,',');
+
+        getline(ss,token,',');
+        isIssued = stoi(token);
+
+        getline(ss,token,',');
+        issuedTo=stoi(token);
+
+        Book book(id,title,author);
+        book.setIssued(isIssued);
+        book.setIssuedToUser(issuedTo);
+
+        books.push_back(book);
+    }
+    cout << "Loading books...\n";
+
+
+    file.close();
+}
+
+void Library::saveUsersToFile() const
+{
+    ofstream file("users.csv");
+
+    for(const User &user : users)
+    {
+        file << user.getId()<<","
+             << user.getName()<<endl;
+    }
+    
+    cout << "Saving users...\n";
+
+    file.close();
+}
+
+void Library::loadUsersFromFile()
+{
+    ifstream file("users.csv");
+
+    if(!file.is_open())
+        return;
+    
+        string line;
+
+        while(getline(file,line))
+        {
+            stringstream ss(line);
+            string token;
+
+            int id;
+            string name;
+
+            getline(ss,token,',');
+            id=stoi(token);
+
+            getline(ss,name,',');
+
+            User user(id,name);
+            users.push_back(user);
+        }
+        cout << "Loading users...\n";
+
+
+        file.close();
 }
