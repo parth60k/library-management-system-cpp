@@ -1,5 +1,5 @@
 #include <iostream>
-#include<fstream>
+#include<fstream>       
 #include<sstream>
 #include "Library.h"
 
@@ -9,6 +9,17 @@ Library::Library()
 {
     loadBooksFromFile();
     loadUsersFromFile();
+}
+
+void Library::saveBooksToFile() const
+{
+    ofstream file("books.txt");
+
+    for(const auto &book : books)
+    {
+        file<<book.toFileString()<<endl;
+    }
+    file.close();
 }
 
 void Library::addBook()
@@ -271,4 +282,65 @@ void Library::loadUsersFromFile()
 
 
         file.close();
+}
+
+void Library::loadBooksFromFile()
+{
+    ifstream file("books.txt");
+    string line;
+
+    while(getline(file,line))
+    {
+        stringstream ss(line);
+        string idStr , title, author, issuedStr, userIdStr;
+
+        getline(ss, idStr, ',');
+        getline(ss, title, ',');
+        getline(ss, author, ',');
+        getline(ss, issuedStr, ',');
+        getline(ss, userIdStr, ',');
+
+        int id=stoi(idStr);
+        bool issued = stoi(issuedStr);
+        int userId = stoi(userIdStr);
+
+        Book book(id,title,author);
+        book.setIssued(issued);
+        book.setIssuedToUser(userId);
+
+        books.push_back(book);
+    }
+    file.close();
+}
+
+void Library::saveUsersToFile() const
+{
+    ofstream file("users.txt");
+
+    for(const auto &user :users)
+    {
+        file<< user.toFileString() <<endl;
+    }
+    file.close();
+}
+
+void Library::loadUsersFromFile() 
+{
+    ifstream file("users.txt");
+    string line;
+
+    while(getline(file,line))
+    {
+        stringstream ss(line);
+        string idStr,name;
+
+        getline(ss,idStr,',');
+        getline(ss,name,',');
+
+        int id=stoi(idStr);
+
+        User user(id,name);
+        users.push_back(user);
+    }
+    file.close();
 }

@@ -24,6 +24,7 @@ class Book
 
         int getIssuedToUserId() const;
         void setIssuedToUser(int userId);
+        string toFileString() const;
 
 };
 

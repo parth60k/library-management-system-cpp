@@ -15,6 +15,8 @@ class User
 
         int getId() const;
         string getName() const;
+        
+        string toFileString() const;
 };
 
 #endif

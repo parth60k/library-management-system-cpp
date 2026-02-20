@@ -11,3 +11,7 @@ string User::getName() const
 {
     return name;
 }
+string User::toFileString() const
+{
+    return to_string(id) + "," + name;
+}

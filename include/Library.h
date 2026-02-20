@@ -1,6 +1,6 @@
-#ifndef LIBRARY_H
-#define LIBRARY_H
-
+#ifndef LIBRARY_H           // ifndef def and endif ensures that if library h is not defined define it and end it and prevents 
+#define LIBRARY_H           //mutiple class occuring by it
+                            //It prevents multiple inclusion of the same header file
 #include<vector>
 #include "Book.h"
 #include "User.h"
@@ -33,6 +33,7 @@ class Library
 
         void saveUsersToFile() const;
         void loadUsersFromFile();
+
 
 };
 #endif

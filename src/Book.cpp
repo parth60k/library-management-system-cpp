@@ -32,3 +32,8 @@ void Book::setIssuedToUser(int userId)
 {
     issuedToUserId = userId;
 }
+string Book::toFileString() const
+{
+    return to_string(id) + ","+ title + "," + 
+    to_string(isIssued) + "," + to_string(issuedToUserId);
+}
